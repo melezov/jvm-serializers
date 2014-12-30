@@ -1,8 +1,5 @@
 package serializers.dslplatform;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +18,7 @@ import serializers.dslplatform.media.Player;
 import serializers.dslplatform.media.Size;
 
 import com.dslplatform.client.json.JsonReader;
+import com.dslplatform.client.json.JsonWriter;
 
 import data.media.MediaTransformer;
 
@@ -50,16 +48,16 @@ public class DSLPlatform {
 
               @Override
               public MediaContent deserialize(final byte[] array) throws Exception {
-                     return (MediaContent) MediaContent.deserialize(new JsonReader(array, null), null);
+                     final JsonReader reader = new JsonReader(array, null);
+                     reader.getNextToken();
+                     return MediaContent.JSON_READER.deserialize(reader, null);
               }
 
               @Override
               public byte[] serialize(final MediaContent content) throws Exception {
-                     final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                     final Writer osw = new OutputStreamWriter(baos, utf8);
-                     content.serialize(osw, true);
-                     osw.close();
-                     return baos.toByteArray();
+                     final JsonWriter writer = new JsonWriter();
+                     content.serialize(writer, true);
+                     return writer.toBytes();
               }
 
               // TODO: See what deserializeItems exactly means, and if we support it
