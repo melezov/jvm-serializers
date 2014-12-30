@@ -18,7 +18,8 @@
       <artifactId>sbinary</artifactId>
       <version>0.3-alpha</version>
       <scope>system</scope>
-      <systemPath>${basedir}/../tpc/lib/sbinary-0.3-alpha.jar</systemPath>
+      <!-- <systemPath>${basedir}/../tpc/lib/sbinary-0.3-alpha.jar</systemPath> -->
+      <systemPath>${basedir}/../tpc/lib/sbinary_2.11-0.4.3-SNAPSHOT.jar</systemPath>
     </dependency>
   </dependencies>
 

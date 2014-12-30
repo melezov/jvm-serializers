@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="build/bytecode/main"/>
 	<classpathentry kind="src" path="pregen/media.thrift/gen-javabean"/>
 	<classpathentry kind="src" path="pregen/media.proto"/>
 	<classpathentry kind="src" path="build/gen/media.tcks"/>
@@ -53,8 +55,7 @@
 	<classpathentry kind="lib" path="lib/protostuff-json-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/protostuff-runtime-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/protostuff-xml-1.0.1.jar"/>
-	<classpathentry kind="lib" path="lib/sbinary-0.3.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="lib/scala-library-2.8.0-rc1.jar"/>
+	<classpathentry kind="lib" path="lib/sbinary_2.11-0.4.3-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.5.10.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-nop-1.5.10.jar"/>
 	<classpathentry kind="lib" path="lib/snakeyaml-1.1.jar"/>
@@ -83,18 +84,22 @@
 	<classpathentry kind="lib" path="lib/bson4jackson-2.3.0.jar"/>
 	<classpathentry kind="lib" path="lib/fst-1.42.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.4.0.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-core-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-databind-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-dataformat-avro-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-dataformat-cbor-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-dataformat-smile-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-dataformat-xml-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-dataformat-yaml-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-jr-objects-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-module-afterburner-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-module-jaxb-annotations-2.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-databind-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-dataformat-avro-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-dataformat-cbor-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-dataformat-smile-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-dataformat-xml-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-dataformat-yaml-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-jr-objects-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-module-afterburner-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-module-jaxb-annotations-2.4.3.jar"/>
 	<classpathentry kind="lib" path="lib/kryo-2.23.0.jar"/>
 	<classpathentry kind="lib" path="lib/msgpack-0.6.9.jar"/>
 	<classpathentry kind="lib" path="lib/stephenerialization-3.0.0.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="lib/scala-library_2.11.2.jar"/>
+	<classpathentry kind="lib" path="lib/scala-reflect_2.11.2.jar"/>
+	<classpathentry kind="lib" path="lib/scala-xml_2.11-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/dsl-client-java-1.1.1.jar"/>
+        	<classpathentry kind="output" path="bin"/>
 </classpath>

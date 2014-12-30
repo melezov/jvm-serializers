@@ -4,9 +4,33 @@ import serializers.avro.AvroGeneric;
 import serializers.avro.AvroSpecific;
 import serializers.cks.CksBinary;
 import serializers.cks.CksText;
-import serializers.jackson.*;
-import serializers.javaxjson.*;
-import serializers.json.*;
+import serializers.dslplatform.DSLPlatform;
+import serializers.jackson.JacksonBsonDatabind;
+import serializers.jackson.JacksonCBORDatabind;
+import serializers.jackson.JacksonJrDatabind;
+import serializers.jackson.JacksonJsonDatabind;
+import serializers.jackson.JacksonJsonManual;
+import serializers.jackson.JacksonSmileDatabind;
+import serializers.jackson.JacksonSmileManual;
+import serializers.jackson.JacksonWithAfterburner;
+import serializers.jackson.JacksonWithColumnsDatabind;
+import serializers.jackson.JacksonXmlDatabind;
+import serializers.jackson.JacksonYAMLDatabind;
+import serializers.javaxjson.JavaxJsonStreamGlassfish;
+import serializers.javaxjson.JavaxJsonTreeGlassfish;
+import serializers.json.FastJSONDatabind;
+import serializers.json.FlexjsonDatabind;
+import serializers.json.JsonArgoTree;
+import serializers.json.JsonDotOrgManualTree;
+import serializers.json.JsonGsonDatabind;
+import serializers.json.JsonGsonManual;
+import serializers.json.JsonGsonTree;
+import serializers.json.JsonLibJsonDatabind;
+import serializers.json.JsonSimpleWithContentHandler;
+import serializers.json.JsonSmartManualTree;
+import serializers.json.JsonSvensonDatabind;
+import serializers.json.JsonTwoLattes;
+import serializers.json.JsonijJpath;
 import serializers.kryo.Kryo;
 import serializers.msgpack.MsgPack;
 import serializers.protobuf.Protobuf;
@@ -25,18 +49,19 @@ import serializers.xml.XmlXStream;
  */
 public class BenchmarkRunner extends MediaItemBenchmark
 {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         new BenchmarkRunner().runBenchmark(args);
     }
 
-    protected void addTests(TestGroups groups)
+    @Override
+    protected void addTests(final TestGroups groups)
     {
         // Binary Formats; language-specific ones
         JavaBuiltIn.register(groups);
         JavaManual.register(groups);
         Stephenerialization.register(groups);
 
-        Scala.register(groups);
+        //Scala.register(groups);
 // hessian, kryo and wobly are Java object serializations
         Hessian.register(groups);
         Kryo.register(groups);
@@ -62,7 +87,7 @@ public class BenchmarkRunner extends MediaItemBenchmark
         //    usage, and basically seems to optimize for benchmarks instead of reflecting real usage.
         MsgPack.register(groups);
         JacksonCBORDatabind.register(groups);
-        
+
         // JSON
         JacksonJsonManual.register(groups);
         JacksonJsonDatabind.register(groups);
@@ -84,14 +109,17 @@ public class BenchmarkRunner extends MediaItemBenchmark
         JsonLibJsonDatabind.register(groups);
         FastJSONDatabind.register(groups);
         JsonSimpleWithContentHandler.register(groups);
-//        JsonSimpleManualTree.register(groups);
+        //JsonSimpleManualTree.register(groups);
         JsonSmartManualTree.register(groups);
         JsonDotOrgManualTree.register(groups);
         JsonijJpath.register(groups);
-// JsonijManualTree.register(groups);
+
+        // JsonijManualTree.register(groups);
+
         JsonArgoTree.register(groups);
-// 06-May-2013, tatu: Too slow (100x above fastest)
-// JsonPathDeserializerOnly.register(groups);
+
+        // 06-May-2013, tatu: Too slow (100x above fastest)
+        //JsonPathDeserializerOnly.register(groups);
 
         // Then JSON-like
         // CKS text is textual JSON-like format
@@ -101,11 +129,13 @@ public class BenchmarkRunner extends MediaItemBenchmark
         JacksonSmileManual.register(groups);
         JacksonSmileDatabind.register(groups);
 
-	// 06-May-2013, tatu: Unfortunately there is a version conflict
-        //    here too -- commenting out, to let David fix it
-//        ProtostuffSmile.register(groups);
+        // 06-May-2013, tatu: Unfortunately there is a version conflict
+        // here too -- commenting out, to let David fix it
+        // ProtostuffSmile.register(groups);
+
         // BSON is JSON-like format with extended datatypes
         JacksonBsonDatabind.register(groups);
+
         MongoDB.register(groups);
 
         // YAML (using Jackson module built on SnakeYAML)
@@ -125,8 +155,11 @@ public class BenchmarkRunner extends MediaItemBenchmark
 
         // Jackson databind with Afterburner; add-on module that uses bytecode gen for speed
         JacksonWithAfterburner.registerAll(groups);
-        
+
         // Jackson's column-oriented variants for formats that usually use key/value notation
         JacksonWithColumnsDatabind.registerAll(groups);
+
+        /* TODO: Description */
+        DSLPlatform.register(groups);
     }
 }
